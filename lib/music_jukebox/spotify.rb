@@ -39,7 +39,6 @@ module MusicJukebox
       @player = Hallon::Player.new(Hallon::OpenAL)
     rescue => e
       ap e
-      self.player
     end
 
     def app_key
