@@ -1,0 +1,22 @@
+<h1><%= !@current_track.empty? ? "#{@current_track.name} - #{@current_track.artist.name} (#{@current_track.link})" : nil %></h1>
+
+<form action="/" method="get">
+  <input type="text" name="query" value="<%= @query %>" />
+  <input type="submit" name="" value="Search" />
+</form>
+
+<form action="/play" method="post">
+  <label for="track_id">Track ID</label>
+   <input type="text" name="track_id" />
+   <input type="submit" name="" value="Play" />
+</form>
+
+<form action="/stop" method="post">
+   <input type="submit" name="" value="Stop" />
+</form>
+
+<ul>
+  <% @tracks.each do |track| %>
+    <li><%= track %></li>
+  <% end %>
+</ul>
