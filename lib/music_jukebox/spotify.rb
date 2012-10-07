@@ -9,8 +9,7 @@ module MusicJukebox
     attr_accessor :session
 
     def self.search query, limit=10
-      search = Hallon::Search.new(query)
-      search.load
+      search = Hallon::Search.new(query).load
 
       search.tracks[0...limit].map(&:load)
     rescue => e
@@ -31,6 +30,12 @@ module MusicJukebox
       player.stop
       @player = nil
       GC.start
+    rescue => e
+      ap e
+    end
+
+    def self.pause
+      player.pause
     rescue => e
       ap e
     end

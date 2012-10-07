@@ -14,21 +14,29 @@ class SpotifyApp < Sinatra::Base
     @tracks = MusicJukebox::Spotify.search(@query).collect do |track|
       track.as_json
     end.to_json
+  rescue => e
+    {}.to_json
   end
 
   get '/current-track' do
     content_type :json
     ($current_track ? $current_track.as_json : {}).to_json
+  rescue => e
+    {}.to_json
   end
 
   post '/stop' do
     MusicJukebox::Spotify.stop
     $current_track = nil
     nil
+  rescue => e
+    nil
   end
 
   post '/play' do
     $current_track = MusicJukebox::Spotify.play(params[:track_id])
+    nil
+  rescue => e
     nil
   end
 end
