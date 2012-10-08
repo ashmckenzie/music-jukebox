@@ -10,7 +10,6 @@ module MusicJukebox
 
     def self.search query, limit=10
       search = Hallon::Search.new(query).load
-
       search.tracks[0...limit].map(&:load)
     rescue => e
       ap e
@@ -18,8 +17,7 @@ module MusicJukebox
 
     def self.play track_id
       stop
-      track = Hallon::Track.new("spotify:track:#{track_id}")
-      track.load
+      track = Hallon::Track.new("spotify:track:#{track_id}").load
       player.play(track)
       track
     rescue => e
