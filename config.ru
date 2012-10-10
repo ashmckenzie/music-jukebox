@@ -1,6 +1,8 @@
 require 'bundler/setup'
 Bundler.require(:default, :development)
 
+require 'sinatra'
+
 require './app'
-App.run!
+run Sinatra::Application
 

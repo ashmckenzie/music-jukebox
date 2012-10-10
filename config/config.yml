@@ -1,0 +1,15 @@
+---
+deploy:
+  base: '/home/apps'
+  repo:
+    url: 'git@github.com:ashmckenzie/music-jukebox.git'
+    branch: 'rdio'
+  ssh_host: 'the-rebellion.net'
+  ssh_user: 'apps'
+  ssh_key: "File.join(ENV['HOME'], '.ssh', 'ashmckenzie_deployment_2048_rsa')"
+  nginx:
+    app_name: 'music-jukebox'
+    server_name: 'music-jukebox.the-rebellion.net'
+    root: '/home/apps/music-jukebox/current/public'
+app:
+  name: music-jukebox
