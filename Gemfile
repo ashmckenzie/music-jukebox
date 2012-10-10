@@ -1,7 +1,7 @@
 source :rubygems
 
-gem 'hallon'
-gem 'hallon-openal'
+# gem 'hallon'
+# gem 'hallon-openal'
 
 gem 'sinatra'
 gem 'foreman'
